@@ -1,13 +1,4 @@
-# AutoMapper
- Based on the [original .NET AutoMapper](https://github.com/AutoMapper/AutoMapper), keeping a workaround for the static mapping methods which were removed with v9.
-
-# Installation
- NuGet: https://www.nuget.org/packages/DXSdata.AutoMapper
-
-# Usage
-
-```c#
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper.DXSdata;
@@ -41,9 +32,3 @@ namespace MapperTest
         }
     }
 }
-
-```
-
-# Links
-
-Website: https://www.dxsdata.com/2019/12/automapper-with-static-extensionmethods-for-net-standard

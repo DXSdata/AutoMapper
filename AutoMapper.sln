@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapper.DXSdata", "AutoMapper\AutoMapper.DXSdata.csproj", "{515138FF-5888-41E6-8472-C945B1AC2221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapperTest", "MapperTest\MapperTest.csproj", "{6C6B0DF0-AB9B-4867-A583-0F413491D67A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{515138FF-5888-41E6-8472-C945B1AC2221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515138FF-5888-41E6-8472-C945B1AC2221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515138FF-5888-41E6-8472-C945B1AC2221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515138FF-5888-41E6-8472-C945B1AC2221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C6B0DF0-AB9B-4867-A583-0F413491D67A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C6B0DF0-AB9B-4867-A583-0F413491D67A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C6B0DF0-AB9B-4867-A583-0F413491D67A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C6B0DF0-AB9B-4867-A583-0F413491D67A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C3BF7C3-D7EE-490F-8575-D220377C0F4C}
+	EndGlobalSection
+EndGlobal
