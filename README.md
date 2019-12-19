@@ -44,6 +44,17 @@ namespace MapperTest
 
 ```
 
+# Notes
+
+If you use nested objects, like MyClass1Object.MyClass2Object.Var1, please use the approach "[Attribute Mapping](https://docs.automapper.org/en/latest/Attribute-mapping.html)". Otherwise you will get a "missing maps" error.
+
+If the attributed classes are not within your default project assembly, please set Mapper.Assembly manually.
+
+E.g. if your DB context classes reside in another project called MyContext, set:
+```<language>
+Mapper.Assembly = nameof(MyContext);
+```
+
 # Links
 
 Website: https://www.dxsdata.com/2019/12/automapper-with-static-extensionmethods-for-net-standard
