@@ -10,7 +10,12 @@ namespace MapperTest
         static void Main()
         {
 
+            //If DB classes reside in other namespace, assembly etc.
             //Mapper.Assembly = nameof(MyAlternativeDbContext);
+
+            //For more complex types, e.g nested custom objects which AutoMapper cannot determine automatically
+            //Mapper.CustomMappings.Add(MyCustomSubclass, MyCustomSubclassViewModel)
+
 
             var list1 = new List<MyClass1>
             {

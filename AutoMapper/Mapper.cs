@@ -12,6 +12,13 @@ namespace AutoMapper.DXSdata
         /// </summary>
         public static string Assembly { get; set; } = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
+
+        /// <summary>
+        /// Custom assignments, e.g. for nested object types
+        /// </summary>
+        public static List<(Type TSource, Type TDestination)> CustomMappings { get; set; } = new List<(Type TSource, Type TDestination)>();
+        
+
         private static IMapper Create(Type TSource, Type TDestination)
         {
             var config = new MapperConfiguration(cfg =>
@@ -21,6 +28,10 @@ namespace AutoMapper.DXSdata
 
                 //the current main class types to be mapped
                 cfg.CreateMap(TSource, TDestination);
+
+                //apply static/global custom assignments
+                foreach (var cm in CustomMappings)
+                    cfg.CreateMap(cm.TSource, cm.TDestination);
             });
             return config.CreateMapper();
         }
