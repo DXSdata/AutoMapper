@@ -34,11 +34,18 @@ namespace AutoMapper.DXSdata
         /// <returns></returns>
         public static TDestination Map<TDestination>(this IEnumerable<object> source)
         {
+            var sourceType = source.GetType().GetGenericArguments()[0];
+
+            //check if array (not list)
+            if (typeof(TDestination).IsArray)
+                return Create(sourceType, typeof(TDestination).GetElementType()).Map<TDestination>(source);
+            
+            //should be list from here
             var destArgs = typeof(TDestination).GetGenericArguments();
             if (destArgs.Length == 0)
                 throw new ArrayTypeMismatchException("Please check your destination type; should be IEnumerable (or use MapL())");
 
-            return Create(source.GetType().GetGenericArguments()[0],destArgs[0]) //could be optimized: https://stackoverflow.com/questions/906499/getting-type-t-from-ienumerablet
+            return Create(sourceType,destArgs[0]) //could be optimized: https://stackoverflow.com/questions/906499/getting-type-t-from-ienumerablet
                 .Map<TDestination>(source);
         }
 
