@@ -17,7 +17,19 @@ namespace AutoMapper.DXSdata
         /// Custom assignments, e.g. for nested object types
         /// </summary>
         public static List<(Type TSource, Type TDestination)> CustomMappings { get; set; } = new List<(Type TSource, Type TDestination)>();
-        
+
+
+        /// <summary>
+        /// For mapping via CustomMappings.Add<TSource,TDestination>()
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TDestination"></typeparam>
+        /// <param name="list"></param>
+        public static void Add<TSource, TDestination>(this List<(Type, Type)> list)
+        {
+            CustomMappings.Add((typeof(TSource), typeof(TDestination)));
+        }
+
 
         private static IMapper Create(Type TSource, Type TDestination)
         {
