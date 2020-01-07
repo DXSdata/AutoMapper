@@ -14,7 +14,7 @@ namespace MapperTest
             //Mapper.Assembly = nameof(MyAlternativeDbContext);
 
             //For more complex types, e.g nested custom objects which AutoMapper cannot determine automatically
-            //As an alternative, you can also use 
+            //As an alternative, you can also use Attribute Mapping: https://docs.automapper.org/en/latest/Attribute-mapping.html
             //Mapper.CustomMappings.Add(typeof(MyCustomSubclass), typeof(MyCustomSubclassViewModel)); //or:            
             //Mapper.CustomMappings.Add<MyCustomSubclass, MyCustomSubclassViewModel>();
 
