@@ -19,7 +19,13 @@ namespace MapperTest
         static void Main()
         {
 
+            //If DB classes reside in other namespace, assembly etc.
             //Mapper.Assembly = nameof(MyAlternativeDbContext);
+
+            //For more complex types, e.g nested custom objects which AutoMapper cannot determine automatically
+            //As an alternative, you can also use Attribute Mapping: https://docs.automapper.org/en/latest/Attribute-mapping.html
+            //Mapper.CustomMappings.Add(typeof(MyCustomSubclass), typeof(MyCustomSubclassViewModel)); //or:            
+            //Mapper.CustomMappings.Add<MyCustomSubclass, MyCustomSubclassViewModel>();
 
             var list1 = new List<MyClass1>
             {
@@ -37,6 +43,7 @@ namespace MapperTest
 
             var dto6 = list1.AsQueryable().ProjectTo<List<MyClass2>>(); //for DB queries
             var dto7 = Mapper.ProjectTo<List<MyClass2>>(list1.AsQueryable());
+
             
             
         }
@@ -47,7 +54,12 @@ namespace MapperTest
 
 # Notes
 
+## Nested objects
+
 If you use nested objects, like MyClass1Object.MyClass2Object.Var1, please use the approach "[Attribute Mapping](https://docs.automapper.org/en/latest/Attribute-mapping.html)". Otherwise you will get a "missing maps" error.
+You can also use Mapper.CustomMappings (see example above).
+
+### Multiple projects
 
 If the attributed classes are not within your default project assembly, please set Mapper.Assembly manually.
 
