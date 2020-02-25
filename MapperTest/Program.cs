@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using AutoMapper.DXSdata;
 
 namespace MapperTest
@@ -18,6 +19,9 @@ namespace MapperTest
             //Mapper.CustomMappings.Add(typeof(MyCustomSubclass), typeof(MyCustomSubclassViewModel)); //or:            
             //Mapper.CustomMappings.Add<MyCustomSubclass, MyCustomSubclassViewModel>();
 
+            //Optional advanced configuration; see below
+            Mapper.OnConfiguring += AdvancedConf;
+
             var list1 = new List<MyClass1>
             {
                 new MyClass1(),
@@ -34,9 +38,19 @@ namespace MapperTest
 
             var dto6 = list1.AsQueryable().ProjectTo<List<MyClass2>>(); //for DB queries
             var dto7 = Mapper.ProjectTo<List<MyClass2>>(list1.AsQueryable());
-
+                        
             
-
         }
+
+        static void AdvancedConf(object sender, MapperConfiguringEventArgs e)
+        {
+            //e.Configuration.CreateMap<MyViewModel, My>().ForMember(my => my.MyEquipment, opt => opt.MapFrom(dto => MyUnflattenMethod<MyEquipment>(dto.Id, dto.Equipment)));
+            //e.Configuration.CreateMap<My, MyViewModel>().ForMember(dto => dto.Equipment, opt => opt.MapFrom(my => MyFlattenMethod(my.MyEquipment)));
+        }
+
+
+   
     }
+
+   
 }

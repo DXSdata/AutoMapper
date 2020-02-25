@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace AutoMapper.DXSdata
 {
+    /// <summary>
+    /// Static configuration for AutoMapper
+    /// </summary>
     public static class Mapper
     {
         /// <summary>
@@ -18,9 +21,16 @@ namespace AutoMapper.DXSdata
         /// </summary>
         public static List<(Type TSource, Type TDestination)> CustomMappings { get; set; } = new List<(Type TSource, Type TDestination)>();
 
+        
+        
+        /// <summary>
+        /// Use this event for adding further custom configuration, advanced mappings etc.
+        /// </summary>
+        static public EventHandler<MapperConfiguringEventArgs> OnConfiguring;
+
 
         /// <summary>
-        /// For mapping via CustomMappings.Add<TSource,TDestination>()
+        /// For mapping via CustomMappings.Add&lt;TSource,TDestination&gt;()
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TDestination"></typeparam>
@@ -44,6 +54,11 @@ namespace AutoMapper.DXSdata
                 //apply static/global custom assignments
                 foreach (var cm in CustomMappings)
                     cfg.CreateMap(cm.TSource, cm.TDestination);
+
+                if (OnConfiguring != null)
+                    OnConfiguring(typeof(Mapper).Namespace, new MapperConfiguringEventArgs() { Configuration = cfg });
+                    //OnConfiguring(null, EventArgs.Empty);
+
             });
             return config.CreateMapper();
         }
@@ -107,5 +122,16 @@ namespace AutoMapper.DXSdata
             return Create(source.ElementType, typeof(TDestination))
                 .ProjectTo<TDestination>(source);
         }
+    }
+
+    /// <summary>
+    /// Aarguments for Mapper's OnConfiguring event
+    /// </summary>
+    public class MapperConfiguringEventArgs : EventArgs
+    {
+        /// <summary>
+        /// AutoMapper configuration. Usage e.g. Configuration.CreateMap(x,y).ReverseMap(); ...
+        /// </summary>
+        public IMapperConfigurationExpression Configuration { get; set; }
     }
 }
