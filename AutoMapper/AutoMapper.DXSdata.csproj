@@ -9,13 +9,13 @@
     <Description>Based on the original .NET AutoMapper, keeping the static ExtensionMethods like Mapper.Map() or Mapper.ProjectTo() which were removed in the original from v9.</Description>
     <AssemblyName>AutoMapper.DXSdata</AssemblyName>
     <PackageId>DXSdata.AutoMapper</PackageId>
-    <Version>9.0.4</Version>
+    <Version>10.1.1</Version>
     <PackageProjectUrl>https://www.dxsdata.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DXSdata/AutoMapper</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 
   <!-- Summary comments in NuGet packages / builds -->
