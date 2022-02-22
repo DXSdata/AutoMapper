@@ -10,6 +10,7 @@ namespace MapperTest
         public string Var2 { get; set; }
         public string Var3 { get; set; }
 
-
+        public byte[] BytesEmpty { get; set; }
+        public byte[] BytesNull { get; set; }
     }
 }
