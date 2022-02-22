@@ -59,6 +59,7 @@ namespace AutoMapper.DXSdata
                     OnConfiguring(typeof(Mapper).Namespace, new MapperConfiguringEventArgs() { Configuration = cfg });
                     //OnConfiguring(null, EventArgs.Empty);
 
+                cfg.ValueTransformers.Add<byte[]>(val => val.Length == 0 ? null : val);
             });
             return config.CreateMapper();
         }
